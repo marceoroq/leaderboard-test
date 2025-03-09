@@ -6,6 +6,9 @@
 }
 
 @theme inline {
+  --color-auburn: #763116;
+  --color-pale-gold: #fae091;
+  --color-pale-gold-light: #fcebb9;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
