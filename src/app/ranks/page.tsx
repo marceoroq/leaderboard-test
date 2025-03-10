@@ -1,6 +1,7 @@
 "use client";
 
 import Avatar from "@/components/Avatar";
+import Dropdown from "@/components/Dropdown";
 import { Tab, TabList, TabPanel, TabPanels, TabProvider } from "@/components/Tab";
 import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "@/components/Table";
 
@@ -44,7 +45,8 @@ export default function Home() {
         </TabList>
 
         <TabPanels>
-          <TabPanel className="flex flex-col h-full" id="tab1">
+          <TabPanel className="flex flex-col h-full gap-4" id="tab1">
+            <Dropdown />
             <div className="p-4 pb-1 h-full rounded-lg bg-auburn overflow-auto">
               <Table variant="leaderboard" className="shadow-xl">
                 <TableHeader variant="leaderboard">
@@ -79,10 +81,39 @@ export default function Home() {
             </div>
           </TabPanel>
 
-          <TabPanel className="h-full" id="tab2">
-            <div className="p-4 rounded border">
-              <h2 className="text-xl font-semibold mb-2">Content of Tab 2</h2>
-              <p>This is the content of the tab number 2</p>
+          <TabPanel className="flex flex-col h-full gap-4" id="tab2">
+            <Dropdown />
+            <div className="p-4 pb-1 h-full rounded-lg bg-auburn overflow-auto">
+              <Table variant="leaderboard" className="shadow-xl">
+                <TableHeader variant="leaderboard">
+                  <TableRow variant="leaderboard" className="bg-auburn">
+                    <TableHeaderCell className="w-12">RANK</TableHeaderCell>
+                    <TableHeaderCell className="text-center w-16"></TableHeaderCell>
+                    <TableHeaderCell>USERNAME / WALLET</TableHeaderCell>
+                    <TableHeaderCell align="right" className="w-36">
+                      REFERRALS
+                    </TableHeaderCell>
+                  </TableRow>
+                </TableHeader>
+
+                <TableBody>
+                  {leaderboardData.map((entry) => (
+                    <TableRow
+                      key={entry.rank}
+                      variant="leaderboard"
+                      className="border-b-12 bg-pale-gold hover:bg-pale-gold-light last:border-b-0">
+                      <TableCell align="center" className="font-bold text-auburn">{`${entry.rank}.`}</TableCell>
+                      <TableCell align="center">
+                        <Avatar color={entry.avatarColor} />
+                      </TableCell>
+                      <TableCell className="font-bold text-auburn uppercase">{entry.username}</TableCell>
+                      <TableCell align="right" className="font-bold text-auburn">
+                        {entry.referrals.toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
             </div>
           </TabPanel>
         </TabPanels>
