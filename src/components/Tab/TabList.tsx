@@ -9,7 +9,7 @@ export const TabList: React.FC<TabListProps> = ({ children, className = "", aria
     <div
       role="tablist"
       aria-label={ariaLabel}
-      className={`flex space-x-1 border-b ${className}`}>
+      className={`flex border-b-2 border-auburn w-full pl-4 gap-6 ${className}`}>
       {children}
     </div>
   );
